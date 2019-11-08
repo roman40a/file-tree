@@ -5,3 +5,9 @@
   justify-content: center;
   align-items: center;
 }
+
+.fileTreeContainer {
+  height: 700px;
+  width: 600px;
+  display: flex;
+}

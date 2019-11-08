@@ -1,6 +1,10 @@
 @import '../../configs/config.css';
 
 .container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
     padding-left: 10px;
     background-color: var(--headerBackground);
 }
@@ -31,6 +35,8 @@
 }
 
 .content {
+    flex: 1 1 0;
+    overflow: auto;
     background-color: #252525;
 }
 

@@ -8,7 +8,9 @@ export class App extends React.PureComponent {
     render() {
         return (
             <div className={css.container}>
-                <FileTree data={data} />
+                <div className={css.fileTreeContainer}>
+                    <FileTree data={data} />
+                </div>
             </div>
         );
     }
