@@ -1,0 +1,68 @@
+import React from 'react';
+import cn from 'classnames';
+import { Node, NodeType } from './file-tree-node.model';
+
+import css from './file-tree-node.module.css';
+
+const CHILDREN_PADDING = 20;
+
+export type FileTreeNodeProps = {
+    data: Node;
+    outPadding?: number;
+};
+
+type FileTreeNodeState = {
+    isOpened: boolean;
+};
+
+export class FileTreeNode extends React.PureComponent<
+    FileTreeNodeProps,
+    FileTreeNodeState
+> {
+    readonly state: FileTreeNodeState = {
+        isOpened: false,
+    };
+
+    handleItemClick = () => {
+        this.setState(state => ({ isOpened: !state.isOpened }));
+    };
+
+    render() {
+        const { data, outPadding } = this.props;
+        const { isOpened } = this.state;
+        const isFile = data.type === NodeType.File;
+        const leftPadding = outPadding || 10;
+
+        const iconClassName = cn(css.icon, {
+            [css.icon__opened]: isOpened && !isFile,
+        });
+
+        const titleClassName = cn(css.title, {
+            [css.title__file]: isFile,
+        });
+
+        return (
+            <div className={css.container}>
+                <div
+                    className={css.item}
+                    style={{ paddingLeft: leftPadding }}
+                    onClick={this.handleItemClick}
+                >
+                    {!isFile && <div className={iconClassName} />}
+                    <div className={titleClassName}>{data.title}</div>
+                </div>
+                {data.children && isOpened && (
+                    <div className={css.children}>
+                        {data.children.map((node, i) => (
+                            <FileTreeNode
+                                key={i}
+                                data={node}
+                                outPadding={leftPadding + CHILDREN_PADDING}
+                            />
+                        ))}
+                    </div>
+                )}
+            </div>
+        );
+    }
+}
