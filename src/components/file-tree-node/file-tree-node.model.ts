@@ -1,18 +1,17 @@
-export enum NodeType {
-    Folder,
-    File,
-}
+import { NodeType } from '../file-tree/file-tree.model';
 
-export type Node = File | Folder;
-
-export type File = {
+export type FileWithPath = {
     type: NodeType.File;
     title: string;
+    path: string;
     children?: undefined;
 };
 
-export type Folder = {
+export type FolderWithPath = {
     type: NodeType.Folder;
     title: string;
-    children?: Node[];
+    path: string;
+    children?: NodeWithPath[];
 };
+
+export type NodeWithPath = FileWithPath | FolderWithPath;

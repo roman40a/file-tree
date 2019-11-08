@@ -1,14 +1,16 @@
 import React from 'react';
 import cn from 'classnames';
-import { Node, NodeType } from './file-tree-node.model';
+import { NodeWithPath } from './file-tree-node.model';
+import { NodeType } from '../file-tree/file-tree.model';
 
 import css from './file-tree-node.module.css';
 
 const CHILDREN_PADDING = 20;
 
 export type FileTreeNodeProps = {
-    data: Node;
+    data: NodeWithPath;
     outPadding?: number;
+    onNodeSelect(path: string): void;
 };
 
 type FileTreeNodeState = {
@@ -23,12 +25,18 @@ export class FileTreeNode extends React.PureComponent<
         isOpened: false,
     };
 
-    handleItemClick = () => {
-        this.setState(state => ({ isOpened: !state.isOpened }));
+    handleItemClick = (node: NodeWithPath) => () => {
+        const { onNodeSelect } = this.props;
+        this.setState(
+            state => ({ isOpened: !state.isOpened }),
+            () => {
+                onNodeSelect(node.path);
+            }
+        );
     };
 
     render() {
-        const { data, outPadding } = this.props;
+        const { data, outPadding, onNodeSelect } = this.props;
         const { isOpened } = this.state;
         const isFile = data.type === NodeType.File;
         const leftPadding = outPadding || 10;
@@ -46,7 +54,7 @@ export class FileTreeNode extends React.PureComponent<
                 <div
                     className={css.item}
                     style={{ paddingLeft: leftPadding }}
-                    onClick={this.handleItemClick}
+                    onClick={this.handleItemClick(data)}
                 >
                     {!isFile && <div className={iconClassName} />}
                     <div className={titleClassName}>{data.title}</div>
@@ -55,9 +63,10 @@ export class FileTreeNode extends React.PureComponent<
                     <div className={css.children}>
                         {data.children.map((node, i) => (
                             <FileTreeNode
-                                key={i}
+                                key={node.path}
                                 data={node}
                                 outPadding={leftPadding + CHILDREN_PADDING}
+                                onNodeSelect={onNodeSelect}
                             />
                         ))}
                     </div>

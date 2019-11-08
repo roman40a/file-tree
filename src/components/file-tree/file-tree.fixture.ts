@@ -1,4 +1,4 @@
-import { Node, NodeType } from '../file-tree-node/file-tree-node.model';
+import { NodeType, Node } from './file-tree.model';
 
 export const data: Node[] = [
     {
