@@ -1,6 +1,7 @@
 @import '../../configs/config.css';
 
 .container {
+    position: relative;
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -9,7 +10,7 @@
     background-color: var(--headerBackground);
 }
 
-.header {
+.header, .footer {
     background-color: var(--headerBackground);
     padding: 10px;
     display: flex;
@@ -38,6 +39,17 @@
     flex: 1 1 0;
     overflow: auto;
     background-color: #252525;
+    display: flex;
+    flex-direction: column;
+}
+
+.fileTreeContainer {
+    flex: 1 1 0;
+    overflow: auto;
+}
+
+.bucketContainer {
+    color: white;
 }
 
 .createIconsContainer {
@@ -55,4 +67,16 @@
     margin-left: 10px;
     background-position: center;
     background-image: url('./images/folder-add.png');
+}
+
+.minimizeFileTree{
+    margin-left: 0px;
+    background-position: center;
+    background-image: url('./images/minimize.png');
+}
+
+.settings{
+    margin-left: 0px;
+    background-position: center;
+    background-image: url('./images/settings.png');
 }

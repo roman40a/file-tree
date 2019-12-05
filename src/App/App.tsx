@@ -9,7 +9,7 @@ export class App extends React.PureComponent {
         return (
             <div className={css.container}>
                 <div className={css.fileTreeContainer}>
-                    <FileTree data={data} />
+                    <FileTree data={data} isDisabled={false} />
                 </div>
             </div>
         );
