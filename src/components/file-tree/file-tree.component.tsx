@@ -66,6 +66,8 @@ export class FileTree extends React.PureComponent<
             parseToNodeWithPath(node, PATH_SPLITTER)
         );
 
+        const random = Math.floor(Math.random() * 100);
+
         return (
             <div className={css.container}>
                 <DisableBgd shown={isDisabled} />
@@ -105,7 +107,7 @@ export class FileTree extends React.PureComponent<
                     </div>
                     <div className={css.bucketContainer}>
                         <Bucket
-                            percent={65}
+                            percent={random}
                             onTrashActivate={this.handleTrashActivate}
                         />
                     </div>
