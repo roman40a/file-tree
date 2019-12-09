@@ -18,8 +18,8 @@
 
 .icon {
     cursor: pointer;
-    width: 50px;
-    height: 50px;
+    width: 30px;
+    height: 30px;
     background-repeat: no-repeat;
     background-size: contain;
     background-position: left center;
@@ -28,7 +28,6 @@
 
 .barContainer {
     flex: 1 1 0;
-    margin-left: 10px;
 }
 
 .barWrapper {
@@ -38,14 +37,21 @@
 }
 
 .bar {
-    height: 20px;
+    height: 16px;
     background-color: blueviolet;
-    border-radius: 10px;
+    border-radius: 8px;
+}
+
+.subscription {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
 }
 
 .percent {
-    margin-top: 5px;
     text-align: center;
     font-size: 25px;
     color: var(--textColor);
+    margin-left: 10px;
 }
