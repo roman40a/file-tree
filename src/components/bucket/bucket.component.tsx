@@ -15,6 +15,9 @@ export class Bucket extends React.PureComponent<Props> {
             <div className={css.container}>
                 <div className={css.line} />
                 <div className={css.content}>
+                    <div className={css.iconContainer}>
+                        <div className={css.icon} onClick={onTrashActivate} />
+                    </div>
                     <div className={css.barContainer}>
                         <div className={css.barWrapper}>
                             <div
@@ -23,10 +26,6 @@ export class Bucket extends React.PureComponent<Props> {
                             />
                         </div>
                         <div className={css.subscription}>
-                            <div
-                                className={css.icon}
-                                onClick={onTrashActivate}
-                            />
                             <div
                                 className={css.percent}
                             >{`${percent}/100`}</div>

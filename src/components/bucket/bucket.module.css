@@ -13,13 +13,19 @@
 
 .content {
     display: flex;
+}
+
+.iconContainer {
+    display: flex;
+    justify-content: center;
     align-items: flex-start;
+    height: 87px;
 }
 
 .icon {
     cursor: pointer;
-    width: 30px;
-    height: 30px;
+    width: 50px;
+    height: 50px;
     background-repeat: no-repeat;
     background-size: contain;
     background-position: left center;
@@ -28,12 +34,17 @@
 
 .barContainer {
     flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .barWrapper {
     border: 3px solid var(--textColor);
     border-radius: 14px;
     padding: 1px;
+    width: 100%;
 }
 
 .bar {
