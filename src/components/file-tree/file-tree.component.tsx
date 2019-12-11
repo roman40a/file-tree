@@ -11,6 +11,7 @@ import { Bucket } from '../bucket/bucket.component';
 export type FileTreeProps = {
     data: Node[];
     isDisabled: boolean;
+    bucketPercent: number;
 };
 
 type FileTreeState = {
@@ -55,7 +56,7 @@ export class FileTree extends React.PureComponent<
 
     render() {
         const { nodes } = this.state;
-        const { isDisabled } = this.props;
+        const { isDisabled, bucketPercent } = this.props;
 
         const createFileClassName = cn(css.icon, css.createFile);
         const createFolderClassName = cn(css.icon, css.createFolder);
@@ -65,8 +66,6 @@ export class FileTree extends React.PureComponent<
         const nodesWithPath = nodes.map(node =>
             parseToNodeWithPath(node, PATH_SPLITTER)
         );
-
-        const random = Math.floor(Math.random() * 100);
 
         return (
             <div className={css.container}>
@@ -107,7 +106,7 @@ export class FileTree extends React.PureComponent<
                     </div>
                     <div className={css.bucketContainer}>
                         <Bucket
-                            percent={random}
+                            percent={bucketPercent}
                             onTrashActivate={this.handleTrashActivate}
                         />
                     </div>

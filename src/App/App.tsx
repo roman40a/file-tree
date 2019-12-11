@@ -6,10 +6,16 @@ import css from './App.module.css';
 
 export class App extends React.PureComponent {
     render() {
+        const random = Math.floor(Math.random() * 100);
+
         return (
             <div className={css.container}>
                 <div className={css.fileTreeContainer}>
-                    <FileTree data={data} isDisabled={false} />
+                    <FileTree
+                        data={data}
+                        isDisabled={false}
+                        bucketPercent={random}
+                    />
                 </div>
             </div>
         );
