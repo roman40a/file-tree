@@ -10,6 +10,7 @@
     cursor: pointer;
     min-height: 50px;
     padding-left: 20px;
+    user-select: none;
 }
 
 .item:hover {
@@ -50,4 +51,21 @@
 }
 
 .children {
+}
+
+.contextMenu {
+    background-color: var(--headerBackground);
+    border: 1px solid black;
+    padding: 12px;
+    font-size: 20px;
+    color: var(--textColor);
+}
+
+.contextMenuItem {
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.contextMenuItem:last-child {
+    margin-bottom: 0;
 }

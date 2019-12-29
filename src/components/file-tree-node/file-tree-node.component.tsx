@@ -1,5 +1,6 @@
 import React from 'react';
 import cn from 'classnames';
+import { ContextMenu, MenuItem, ContextMenuTrigger } from 'react-contextmenu';
 import { NodeWithPath } from './file-tree-node.model';
 import { NodeType } from '../file-tree/file-tree.model';
 
@@ -35,6 +36,18 @@ export class FileTreeNode extends React.PureComponent<
         );
     };
 
+    handleAddFile = (node: NodeWithPath) => () => {
+        console.log('Add', node);
+    };
+
+    handleRemoveFile = (node: NodeWithPath) => () => {
+        console.log('Remove', node);
+    };
+
+    handleDownload = (node: NodeWithPath) => () => {
+        console.log('Download', node);
+    };
+
     render() {
         const { data, outPadding, onNodeSelect } = this.props;
         const { isOpened } = this.state;
@@ -51,14 +64,41 @@ export class FileTreeNode extends React.PureComponent<
 
         return (
             <div className={css.container}>
-                <div
-                    className={css.item}
-                    style={{ paddingLeft: leftPadding }}
-                    onClick={this.handleItemClick(data)}
-                >
-                    {!isFile && <div className={iconClassName} />}
-                    <div className={titleClassName}>{data.title}</div>
-                </div>
+                <React.Fragment>
+                    <ContextMenuTrigger id={data.path}>
+                        <div
+                            className={css.item}
+                            style={{ paddingLeft: leftPadding }}
+                            onClick={this.handleItemClick(data)}
+                        >
+                            {!isFile && <div className={iconClassName} />}
+                            <div className={titleClassName}>{data.title}</div>
+                        </div>
+                    </ContextMenuTrigger>
+                    <ContextMenu className={css.contextMenu} id={data.path}>
+                        <MenuItem
+                            className={css.contextMenuItem}
+                            data={{ foo: 'bar' }}
+                            onClick={this.handleAddFile(data)}
+                        >
+                            Add file
+                        </MenuItem>
+                        <MenuItem
+                            className={css.contextMenuItem}
+                            data={{ foo: 'bar' }}
+                            onClick={this.handleRemoveFile(data)}
+                        >
+                            Remove file
+                        </MenuItem>
+                        <MenuItem
+                            className={css.contextMenuItem}
+                            data={{ foo: 'bar' }}
+                            onClick={this.handleDownload(data)}
+                        >
+                            Download
+                        </MenuItem>
+                    </ContextMenu>
+                </React.Fragment>
                 {data.children && isOpened && (
                     <div className={css.children}>
                         {data.children.map((node, i) => (
