@@ -1,4 +1,5 @@
 import React from 'react';
+import { BreakLine } from '../break-line/break-line';
 
 import css from './bucket.module.css';
 
@@ -13,7 +14,7 @@ export class Bucket extends React.PureComponent<Props> {
 
         return (
             <div className={css.container}>
-                <div className={css.line} />
+                <BreakLine />
                 <div className={css.content}>
                     <div className={css.iconContainer}>
                         <div className={css.icon} onClick={onTrashActivate} />
