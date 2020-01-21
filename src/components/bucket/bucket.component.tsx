@@ -1,5 +1,5 @@
 import React from 'react';
-import { BreakLine } from '../break-line/break-line';
+import { BreakLine } from '../break-line/break-line.component';
 
 import css from './bucket.module.css';
 

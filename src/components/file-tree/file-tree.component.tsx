@@ -4,9 +4,10 @@ import { parseToNodeWithPath, PATH_SPLITTER } from './file-tree.utils';
 import { NodeType, Node } from './file-tree.model';
 import { FileTreeNode } from '../file-tree-node/file-tree-node.component';
 import { DisableBgd } from '../disable-bgd/disable-bgd.component';
+import { Bucket } from '../bucket/bucket.component';
+import { Chat } from '../chat/chat.component';
 
 import css from './file-tree.module.css';
-import { Bucket } from '../bucket/bucket.component';
 
 export type FileTreeProps = {
     data: Node[];
@@ -103,6 +104,9 @@ export class FileTree extends React.PureComponent<
                                 onNodeSelect={this.handleNodeSelect}
                             />
                         ))}
+                    </div>
+                    <div className={css.chatContainer}>
+                        <Chat />
                     </div>
                     <div className={css.bucketContainer}>
                         <Bucket

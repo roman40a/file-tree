@@ -48,6 +48,11 @@
     overflow: auto;
 }
 
+.chatContainer {
+    height: 40%;
+    overflow: auto;
+}
+
 .bucketContainer {
     color: white;
 }
