@@ -1,0 +1,14 @@
+@import '../../configs/config.css';
+
+.container {
+    padding: 0 15px 15px 15px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+
+.content {
+    overflow: auto;
+    flex: 1 1 0;
+}
